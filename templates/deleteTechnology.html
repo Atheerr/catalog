@@ -1,0 +1,47 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+<style>
+body {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  padding: 5px;
+  margin: 5px;
+  font-family: 'Advent Pro';
+  font-size: 22px;
+  text-align: center;
+  background-color: #D8E2DC;
+}
+.button {
+      background-color: #F28482;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+</br>
+</br>
+    <div class="card card pink-text lighten-3-text">
+        <h3 style="color:black;text-align:center;"> Are you sure you want to delete {{technology.name}}? </h3>
+        <form action="#" method='post'>
+            <input class="button", type='submit' , value='Delete'>
+        </form>
+        <button  class="button" type="button" onclick="goBack()">Cancel</button>
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script>
+    </div>
+</body>
+</html>

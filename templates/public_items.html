@@ -1,0 +1,96 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+
+<style>
+body {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  padding: 5px;
+  margin: 5px;
+  font-family: 'Advent Pro';
+  font-size: 22px;
+  text-align: center;
+  background-color: #D8E2DC;
+}
+.button {
+  border-radius: 4px;
+  background-color: #F28482;
+  border: none;
+  padding: 10px;
+  width: 50px;
+  margin: 5px;
+}
+h3{
+ color: #F28482;
+}
+</style>
+</head>
+
+<body>
+ <div class="navbar" style="color:#ffffff; background-color: #84A59D;">
+  <hr>
+      <h2 class="logo" >{{ technology.name }} Items</h2>
+      <ul>
+      <i> <button onclick="location.href = '{{url_for('showTechnologys')}}'" class=" button ">
+      <span class="fa fa-home"></span></button></i>
+      <i><button onclick="location.href = '{{url_for('showLogin')}}'" class="button  "><i class="fas fa-sign-in-alt" aria-hidden="true"></i></button></i>
+    </ul>
+    <hr>
+  </div>
+    <br>
+    <div>
+      <hr>
+        <p style="color:#777;">{{technology.description}}</p>
+        {% if items !=[] %}
+        <hr>
+        </br>
+        <div class="row">
+        <div class="col s6 #fafafa grey lighten-5 grey-text text-darken-2">
+          <hr>
+            <h3><i class="fas fa-laptop "></i></h3>
+            <h3>COMPUTING</i></h3>
+            <hr>
+			{% for b in items %}
+			{% if b.type == 'COMPUTING' %}
+            <h4 style="color: #F28482;">{{b.name}}</h4>
+            <p>{{b.description}}</p>
+            <p>{{b.price}}</p>
+            <hr>
+			{% endif %}
+			{% endfor %}
+        </div>
+            <div class="col s6 #fafafa grey lighten-5 grey-text text-darken-2">
+            <hr>
+            <h3> <i class="fas fa-mobile-alt"></i></h3>
+            <h3>MOBILE </i></h3>
+             <hr>
+			{% for b in items %}
+			{% if b.type == 'MOBILE' %}
+            <h4 style="color: #F28482;">{{b.name}}</h4>
+            <p>{{b.description}}</p>
+            <p>{{b.price}}</p>
+            <hr>
+			{% endif %}
+			{% endfor %}
+        </div>
+        </div>
+        {% else %}
+        <div class="card-panel teal lighten-2"><p>Currently there are no items of this technology.</p>
+        </div>
+
+        {% endif %}
+    </div>
+        <hr>
+<footer class="navbar" style="color:#ffffff; background-color: #84A59D; text-align: left;">
+<br>
+  <p > &nbsp; contact us: &nbsp; <a class="fas fa-envelope" style="color:#ffffff" href="a.atheer.harbi@gmail.com"></a>
+  &nbsp; <a class="fab fa-twitter" style="color:#ffffff" href="https://twitter.com/A_ATHEER_R"></a></p>
+</footer>
+</body>
+
+</html>

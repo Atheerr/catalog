@@ -1,0 +1,116 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+
+<style>
+body {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  padding: 5px;
+  margin: 5px;
+  font-family: 'Advent Pro';
+  font-size: 22px;
+  text-align: center;
+  background-color: #D8E2DC;
+}
+.button {
+  border-radius: 4px;
+  background-color: #F28482;
+  border: none;
+  padding: 10px;
+  width: 50px;
+  margin: 5px;
+  color: #ffffff;
+}
+h3{
+ color: #F28482;
+}
+
+</style>
+</head>
+<body>
+    <div>
+       <div class="navbar" style="color:#ffffff; background-color: #84A59D;">
+        <hr>
+        <h4 >{{ technology.name }} Items</h4>
+        <ul>
+          <i><button onclick="location.href = '{{url_for('newItem', technology_id=technology.id)}}'" class="button">
+            <span class="far fa-plus-square"></span></button></i>
+              <i><button onclick="location.href = '{{url_for('showTechnologys')}}'" class="button">
+                <span class="fa fa-home"></span></button></i>
+            <i><button onclick="location.href = '{{url_for('gdisconnect')}}'" class="button">
+              <span class="fas fa-sign-out-alt"></span></button></i>
+               </ul>         
+            <hr>
+            </div>
+            </br>
+            <hr>
+            <p>{{technology.description}}</p>
+            <hr>
+          </br>
+      {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <script>
+              var messages = {{messages | safe}};
+              for (var i = 0; i < messages.length; i++) {
+                alert(messages[i]);
+              }
+            </script>
+            {% endif %} {% endwith %} {% if items !=[] %}
+
+         <div class="row">
+            <div class="col s6 #fafafa grey lighten-5 grey-text text-darken-2">
+            <hr>
+            <h3> <i class="fas fa-laptop "></i></h3>
+            <h3>COMPUTING</i></h3>
+            <hr>
+              {% for b in items %}
+              {% if b.type == 'COMPUTING' %}
+              <h4>{{b.name}}</h4>
+              <p>{{b.description}}</p>
+              <p>{{b.price}}</p>
+              <div>
+                <button onclick="location.href='{{url_for('editItem', technology_id = technology.id, item_id=b.id ) }}'" class="button"><span class="fas fa-edit"></span></button>
+                <button onclick="location.href='{{url_for('deleteItem', technology_id = technology.id, item_id=b.id) }}'" class="button"><span class="far fa-trash-alt"></span></button>
+              </div>
+              <hr>
+              {% endif %}
+              {% endfor %}
+          </div>
+            <div class="col s6 #fafafa grey lighten-5 grey-text text-darken-2">
+            <hr>
+            <h3> <i class="fas fa-mobile-alt"></i></h3>
+            <h3>MOBILE </i></h3>
+             <hr>
+            {% for b in items %}
+            {% if b.type == 'MOBILE' %}
+            <h4>{{b.name}}</h4>
+            <p>{{b.description}}</p>
+            <p>{{b.price}}</p>
+            <div class="btn-group">
+              <button onclick="location.href='{{url_for('editItem', technology_id = technology.id, item_id=b.id ) }}'" class="button"><span class="fas fa-edit"></span></button>
+              <button onclick="location.href='{{url_for('deleteItem', technology_id = technology.id, item_id=b.id) }}'" class="button"><span class="far fa-trash-alt"></span></button>
+            </div>
+            <br>
+            <hr>
+            {% endif %}
+            {% endfor %}
+          </div>
+          {% else %}
+          <a href="{{url_for('newItem', technology_id = technology.id )}}">Add New Item</a>
+        {% endif %}
+      </div>
+    </div>
+  </br>
+    <hr>
+<footer class="navbar" style="color:#ffffff; background-color: #84A59D; text-align: left;">
+<br>
+  <p > &nbsp; contact us: &nbsp; <a class="fas fa-envelope" style="color:#ffffff" href="a.atheer.harbi@gmail.com"></a>
+  &nbsp; <a class="fab fa-twitter" style="color:#ffffff" href="https://twitter.com/A_ATHEER_R"></a></p>
+</footer>
+</body>
+</html>

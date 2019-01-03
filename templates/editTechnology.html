@@ -1,0 +1,64 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<style>
+
+        body {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  padding: 5px;
+  margin: 5px;
+  font-family: 'Advent Pro';
+  font-size: 22px;
+  text-align: center;
+  background-color: #D8E2DC;
+}
+    input[type=text], select {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    .button{
+      width: 100%;
+      background-color: #F28482;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    div {
+      border-radius: 5px;
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+</style>
+</head>
+<body>
+	<div>
+		<h1> Edit Technology </h1>
+		<form action="{{ url_for('editTechnology',technology_id = technology.id)}}" method='post'>
+			<p>Name:</p>
+			<input type='text' size='30' name='name' value='{{technology.name }}'>
+			<p>Description:</p>
+			<input type='text' size='30' name='description' value='{{technology.description }}'>
+			<button class="button"  type='submit' value='Edit'>Edit</button>
+ <button class="button" type="button" onclick="goBack()">Cancel</button>
+                    <script>
+                        function goBack() {
+                            window.history.back();
+                        }
+                    </script>
+                  </form>
+                </form>
+              </div>
+            </body>
+            </html>

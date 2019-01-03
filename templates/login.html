@@ -1,0 +1,85 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js">
+    </script>
+    <script src="//apis.google.com/js/platform.js?onload=start" async defer>
+    </script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<style>
+body {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  padding: 5px;
+  margin: 5px;
+  font-family: 'Advent Pro';
+  font-size: 22px;
+  text-align: center;
+  background-color: #D8E2DC;
+}
+.button {
+  border-radius: 4px;
+  background-color: #F28482;
+  border: none;
+  padding: 10px;
+  width: 50px;
+  margin: 5px;
+}
+</style>
+</head>
+
+
+<body style=" text-align:center">
+<div class="navbar " style="color:#ffffff; background-color: #84A59D;">
+   <h4 class="logo" >Welcome</h4>
+  </div>
+
+    <p>Log in by using Google </p>
+    <div id="signinButton">
+        <span class="g-signin"
+		data-scope="openid email"
+		data-clientid="436943384433-9lritnsvgrbvrftsg6accbp7j6pvmt3r.apps.googleusercontent.com"
+		data-redirecturi="postmessage"
+		data-accesstype="offline"
+		data-cookiepolicy="single_host_origin"
+		data-callback="signInCallback"
+		data-approvalprompt="force">
+          </span>
+    </div> 
+
+    <div id="result">
+    </div>
+    <script>
+        function signInCallback(authResult) {
+            if (authResult['code']) {
+                $('#signinButton').attr('style', 'display: none');
+                $.ajax({
+                    type: 'POST',
+                    url: '/gconnect?state={{STATE}}',
+                    processData: false,
+                    data: authResult['code'],
+                    contentType: 'application/octet-stream; charset=utf-8',
+                    success: function(result) {
+                        if (result) {
+                            $('#result').html('Login Successful!</br>' + result + '</br>I am redirecting you to your main page')
+                            setTimeout(function() {
+                                window.location.href = "/technologys";
+                            }, 3000);
+
+                        } else if (authResult['error']) {
+                            console.log('There was an error: ' + authResult['error']);
+                        } else {
+                            $('#result').html('Failed to make a server-side call. Check your configuration and console.');
+                        }
+                    }
+
+                });
+            }
+        }
+    </script>
+</body>
+
+</html>

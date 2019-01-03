@@ -1,0 +1,59 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+
+<style>
+body {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  padding: 5px;
+  margin: 5px;
+  font-family: 'Advent Pro';
+  font-size: 22px;
+  text-align: center;
+  background-color: #D8E2DC;
+}
+.button {
+  border-radius: 4px;
+  background-color: #F28482;
+  border: none;
+  padding: 10px;
+  width: 50px;
+  margin: 5px;
+}
+</style>
+</head>
+<body>
+  <div class="navbar " style="color:#ffffff; background-color: #84A59D;">
+    <hr>
+    <h3>All Categories</h3>
+    <ul>
+      <i><button onclick="location.href = '{{url_for('showLogin')}}'" class="button">
+        <i class="fas fa-sign-in-alt" aria-hidden="true"></i></button></i>
+    </ul>
+    <hr>
+  </div>
+</br>
+    {% for technology in technologys %}
+          <div class="card-panel #fafafa grey lighten-5 grey-text text-darken-2" >
+            <a href="{{url_for('showItems', technology_id = technology.id)}}">
+            <h3 style="color:#F28482; text-align:center;">{{technology.name}}</h3>
+        </a>
+        <hr>
+        <p style="text-align:left; color:#84A59D">{{technology.description}}</p>
+        <hr>
+    </div>
+    {% endfor %}
+    </div>
+        <hr>
+<footer class="navbar" style="color:#ffffff; background-color: #84A59D; text-align: left;">
+<br>
+  <p > &nbsp; contact us: &nbsp; <a class="fas fa-envelope" style="color:#ffffff" href="a.atheer.harbi@gmail.com"></a>
+  &nbsp; <a class="fab fa-twitter" style="color:#ffffff" href="https://twitter.com/A_ATHEER_R"></a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+body {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  padding: 5px;
+  margin: 5px;
+  font-family: 'Advent Pro';
+  font-size: 22px;
+  text-align: center;
+  background-color: #D8E2DC;
+}
+    input[type=text], select {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+     .button{
+      width: 100%;
+      background-color: #F28482;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    div {
+      border-radius: 5px;
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+
+    </style>
+</head>
+</br>
+</br>
+    <div>
+    <body>
+        <h1> Edit Item Information </h1>
+        <form action="#" method='post'>
+            <p>Name:</p>
+            <input type='text' size='30' name='name' value='{{item.name }}'>
+            <p>Description:</p>
+            <input type='text' size='30' name='description' value='{{item.description}}'>
+            <p>Price:</p>
+            <input type='text' size='30' name='price' value='{{item.price}}'>
+            <p>Type:</p>
+                    {% if item.type == 'COMPUTING' %}
+                    <dd>
+                        <input type='radio' name='type' value='COMPUTING' checked>COMPUTING</dd>
+                    {%else%}
+                    <dd>
+                        <input type='radio' name='type' value='COMPUTING'>COMPUTING</dd>
+                    {% endif %} {% if item.type == 'MOBILE' %}
+                    <dd>
+                        <input type='radio' name='type' value='MOBILE' checked>MOBILE</dd>
+
+                    {%else%}
+                    <dd>
+                        <input type='radio' name='type' value='MOBILE'>MOBILE</dd>
+                    {% endif %}
+                    <button  class="button"  type='submit' value='Edit'>Edit</button>
+                    <button  class="button" type="button" onclick="goBack()">Cancel</button>
+                    <script>
+                        function goBack() {
+                            window.history.back();
+                        }
+                    </script>
+                  </form>
+                </div>
+              </body>
+              </html>
