@@ -25,7 +25,7 @@ CLIENT_ID = json.loads(
 APPLICATION_NAME = "ItemShelf"
 
 # Database session setup
-engine = create_engine('postgresql://catalog:password@localhost/catalog')
+engine = create_engine('postgresql://catalog:atheer@localhost/catalog')
 Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
