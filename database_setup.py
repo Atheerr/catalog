@@ -58,5 +58,5 @@ class TechnologyItem(Base):
         }
 
 
-engine = create_engine('postgresql://catalog:atheer@localhost/catalog')
+engine = create_engine('postgresql://catalog:password@localhost/catalog')
 Base.metadata.create_all(engine)
